@@ -188,7 +188,4 @@ $params = array(
 $server = new WSDL_Webservice($params);
 $server->handle($_SERVER['QUERY_STRING']);
 
-// $ws = new Webservice;
-// echo $ws->get_oncall_CM_phone('9/14/2013');
-
 ?>
