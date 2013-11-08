@@ -39,8 +39,9 @@ class Webservice {
     if (!$recording_url) { return FALSE; }
     
     list($patient_type, $target_type) = $INTENTIONS[$intention];
+    $to = array();
     // IT coordinator, by default, gets all emails
-    $to = $IT_COORDINATOR_EMAIL ? array($IT_COORDINATOR_EMAIL) : array();
+    $cc = $IT_COORDINATOR_EMAIL ? array($IT_COORDINATOR_EMAIL) : array();
     $subject = "EHHOP voicemail from $patient_type, caller ID $ani";
     $on_call = $this->_get_oncall_people($target_type, $nearest_saturday);
     $target_name = $on_call[array_rand($on_call)];
@@ -49,12 +50,14 @@ class Webservice {
       $to[] = $this->_get_email_for($target_type, $target_name);
     }
     $chief_email = $this->_get_chief_email($target_type);
-    if ($chief_email) { $to[] = $chief_email; }
-    $to = implode(', ', array_unique($to));
+    if ($chief_email) { $cc[] = $chief_email; }
+    $to = implode(', ', array_unique(array_filter($to)));
+    $cc = implode(', ', array_unique(array_filter($cc)));
     $message = sprintf($EMAIL_TEMPLATE, $recording_url);
     
     // $to      = $IT_COORDINATOR_EMAIL; // temporary override while testing
-    $headers = "From: EHHOP Clinic <$FROM_EMAIL>\r\n" .
+    $headers = ($cc ? "Cc: $cc\r\n" : '') .
+               "From: EHHOP Clinic <$FROM_EMAIL>\r\n" .
                "Reply-To: EHHOP IT Coordinator <$IT_COORDINATOR_EMAIL>\r\n" .
                'X-Mailer: PHP/' . phpversion();
     
