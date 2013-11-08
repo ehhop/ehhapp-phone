@@ -62,7 +62,7 @@ class Webservice {
                'X-Mailer: PHP/' . phpversion();
     
     if (isset($DEBUG_LOG) && $DEBUG_LOG) {
-      file_put_contents($DEBUG_LOG, "Email to $to\n CC $cc\n subject $subject", FILE_APPEND);
+      file_put_contents($DEBUG_LOG, "Email to $to\n CC $cc\n subject $subject\n", FILE_APPEND);
     }
     
     return mail($to, $subject, $message, $headers);
