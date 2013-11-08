@@ -5,7 +5,7 @@ if (!defined('APPROVED_ENDPOINT')) { die('Not allowed to run this on its own'); 
 date_default_timezone_set('America/New_York');
 
 // Where this is installed.  Set it to the base URL that maps to the webroot.
-$BASE_URL = "http://example.com"
+$BASE_URL = "http://example.com";
 
 // Debug log: log things to this file, if set
 $DEBUG_LOG = FALSE;

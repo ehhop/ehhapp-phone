@@ -1,5 +1,5 @@
 <?php
-define('APPROVED_ENDPOINT');
+define('APPROVED_ENDPOINT', TRUE);
 
 require 'lib/Wsdl_webservice.php';
 require 'lib/csv.php';
