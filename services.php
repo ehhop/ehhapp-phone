@@ -46,7 +46,7 @@ class Webservice {
     $target_name = $on_call[array_rand($on_call)];
     if ($target_name) {
       $subject = "$target_name assigned $subject";
-      $to[] = $this->_get_email_for($target_name);
+      $to[] = $this->_get_email_for($target_type, $target_name);
     }
     $chief_email = $this->_get_chief_email($target_type);
     if ($chief_email) { $to[] = $chief_email; }
@@ -143,7 +143,7 @@ class Webservice {
         }
       }
     }
-    return $best_row;
+    return $min_diff <= 5 ? $best_row : NULL;
   }
   
   private function _get_chief_row($type) {
@@ -163,7 +163,7 @@ class Webservice {
     return $best_row ? $best_row[$CONTACT_COLS['phone']] : '';
   }
   
-  private function _get_email_for($type, $name) {
+  public function _get_email_for($type, $name) {
     global $CONTACT_COLS;
     $best_row = $this->_get_contact_row_for($type, $name);
     return $best_row ? $best_row[$CONTACT_COLS['email']] : '';
