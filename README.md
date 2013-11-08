@@ -8,8 +8,10 @@ It pulls information from a Google Spreadsheet and extracts contact information 
 
 These services require some configuration of secrets before they will work.
 
-Copy config.dist.php --> config.php and change the values according to the instructions.
+Copy `config.dist.php` → `config.php` and change the values according to the instructions.
 
-Then copy all files to a webserver running PHP, and off you go!  Two 
+Then copy all files to a webserver running PHP, and off you go!  There are two main endpoints:
 
-`/services.php` will show the HTML homepage for the SOAP service with the WSDL at `/services?WSDL`.
+* `/services.php` will show the HTML homepage for the SOAP service with the WSDL at `/services?WSDL`.
+
+* `/test.php` allows you to send a few things to the SOAP service to see if it's working.
