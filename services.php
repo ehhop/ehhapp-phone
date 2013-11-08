@@ -163,7 +163,7 @@ class Webservice {
     return $best_row ? $best_row[$CONTACT_COLS['phone']] : '';
   }
   
-  public function _get_email_for($type, $name) {
+  private function _get_email_for($type, $name) {
     global $CONTACT_COLS;
     $best_row = $this->_get_contact_row_for($type, $name);
     return $best_row ? $best_row[$CONTACT_COLS['email']] : '';
