@@ -13,22 +13,22 @@ $audio = preg_replace('/[^a-zA-Z0-9_+-]/', '', str_replace(' ', '+', $_GET['a'])
   <!-- required -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 
-  <link rel="stylesheet" type="text/css" href="../sm2/360player.css" />
+  <link rel="stylesheet" type="text/css" href="sm2/360player.css" />
 
   <!-- special IE-only canvas fix -->
-  <!--[if IE]><script type="text/javascript" src="../sm2/excanvas.js"></script><![endif]-->
+  <!--[if IE]><script type="text/javascript" src="sm2/excanvas.js"></script><![endif]-->
 
   <!-- Apache-licensed animation library -->
-  <script type="text/javascript" src="../sm2/berniecode-animator.js"></script>
+  <script type="text/javascript" src="sm2/berniecode-animator.js"></script>
 
   <!-- the core stuff -->
-  <script type="text/javascript" src="../sm2/soundmanager2.min.js"></script>
-  <script type="text/javascript" src="../sm2/360player.js"></script>
+  <script type="text/javascript" src="sm2/soundmanager2.min.js"></script>
+  <script type="text/javascript" src="sm2/360player.js"></script>
 
   <script type="text/javascript">
   soundManager.setup({
     // path to directory containing SM2 SWF
-    url: '../sm2/'
+    url: 'sm2/'
   });
   
   threeSixtyPlayer.config.scaleFont = (navigator.userAgent.match(/msie/i)?false:true);
