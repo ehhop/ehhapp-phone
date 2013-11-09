@@ -55,7 +55,7 @@ class Webservice {
     $to = implode(', ', array_unique(array_filter($to)));
     $cc = implode(', ', array_unique(array_filter($cc)));
     if (!preg_match('#([^/]+).mp3$#', $recording_url, $matches)) { return FALSE; }
-    $message = sprintf($EMAIL_TEMPLATE, "$BASE_URL/player.php/{$matches[1]}");
+    $message = sprintf($EMAIL_TEMPLATE, "$BASE_URL/player.php?a={$matches[1]}");
     
     // $to      = $IT_COORDINATOR_EMAIL; // temporary override while testing
     $headers = ($cc ? "Cc: $cc\r\n" : '') .

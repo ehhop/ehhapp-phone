@@ -7,7 +7,7 @@ if (!file_exists('config.php')) {
 }
 require 'config.php';
 
-$audio = preg_replace('/[^a-zA-Z0-9_+-]/', '', $_SERVER['PATH_INFO']);
+$audio = preg_replace('/[^a-zA-Z0-9_+-]/', '', str_replace(' ', '+', $_GET['a']));
 ?><html>
 <head>
   <!-- required -->
