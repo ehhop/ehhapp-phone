@@ -27,7 +27,8 @@ class Webservice {
    * @return bool
    **/
   function voicemail_alert($intention, $ani, $nearest_saturday, $recording_url) {
-    global $DEBUG_LOG, $IT_COORDINATOR_EMAIL, $INTENTIONS, $EMAIL_TEMPLATE, $FROM_EMAIL;
+    global $DEBUG_LOG, $BASE_URL, $IT_COORDINATOR_EMAIL, $INTENTIONS, $EMAIL_TEMPLATE, 
+        $FROM_EMAIL;
     
     if (isset($DEBUG_LOG) && $DEBUG_LOG) {
       file_put_contents($DEBUG_LOG, var_export(func_get_args(), TRUE), FILE_APPEND);
@@ -53,7 +54,8 @@ class Webservice {
     if ($chief_email) { $cc[] = $chief_email; }
     $to = implode(', ', array_unique(array_filter($to)));
     $cc = implode(', ', array_unique(array_filter($cc)));
-    $message = sprintf($EMAIL_TEMPLATE, $recording_url);
+    if (!preg_match('#([^/]+).mp3$#', $recording_url, $matches)) { return FALSE; }
+    $message = sprintf($EMAIL_TEMPLATE, "$BASE_URL/player.php/{$matches[1]}");
     
     // $to      = $IT_COORDINATOR_EMAIL; // temporary override while testing
     $headers = ($cc ? "Cc: $cc\r\n" : '') .

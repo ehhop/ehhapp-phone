@@ -37,6 +37,9 @@ $INTENTIONS = array(
   array("ESTABLISHED patient", "CM"),
 );
 
+// Audio URL: where we expect audio messages to be from
+$AUDIO_BASE_URL = "http://example.com/audio/"
+
 // How to construct the email to the CMs or TSes
 $EMAIL_TEMPLATE = <<<EMAIL
 This message can be played from the following URL:
