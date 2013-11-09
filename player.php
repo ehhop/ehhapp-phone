@@ -54,10 +54,11 @@ $audio = preg_replace('/[^a-zA-Z0-9_+-]/', '', str_replace(' ', '+', $_GET['a'])
   </script>
 </head>
 <body>
-  <div style="width: 240px; margin: 0 auto; background: #eee">
+  <div class="player-container">
     <div class="ui360 ui360-vis">
       <a href="<?= $AUDIO_BASE_URL ?><?= $audio ?>.mp3">Voicemail message</a>
     </div>
+    <div class="instructions">Click the play button to start listening.</div>
   </div>
 </body>
 </html>
