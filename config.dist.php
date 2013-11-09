@@ -38,7 +38,7 @@ $INTENTIONS = array(
 );
 
 // Audio URL: where we expect audio messages to be from
-$AUDIO_BASE_URL = "http://example.com/audio/"
+$AUDIO_BASE_URL = "http://example.com/audio/";
 
 // How to construct the email to the CMs or TSes
 $EMAIL_TEMPLATE = <<<EMAIL
