@@ -124,6 +124,7 @@ class Webservice {
       if ($date !== FALSE && $date->diff($nearest_sat)->days < $min_diff) {
         $min_diff = $date->diff($nearest_sat)->days;
         foreach ($col_nums as $i => $col_num) {
+          if (!isset($row[$col_num])) { continue; }
           if (strlen(trim($row[$col_num])) > 0) { $on_call[$i] = $row[$col_num]; }
         }
       }
@@ -138,6 +139,7 @@ class Webservice {
     $best_row = NULL;
     if (!isset($this->worksheets[$type])) { return FALSE; }
     foreach ($this->worksheets[$type] as $row) {
+      if (!isset($row[$CONTACT_COLS['name']])) { continue; }
       $trimmed = strtolower(trim($row[$CONTACT_COLS['name']]));
       if (strlen($trimmed) > 0) {
         // Allow for some small typos (people drop hyphens, add spaces)
@@ -156,6 +158,7 @@ class Webservice {
     $best_row = NULL;
     if (!isset($this->worksheets[$type])) { return FALSE; }
     foreach ($this->worksheets[$type] as $row) {
+      if (!isset($row[$CONTACT_COLS['chief']])) { continue; }
       $trimmed = strtoupper(trim($row[$CONTACT_COLS['chief']]));
       if (strlen($trimmed) > 0 && "CHIEF $type" == $trimmed) { $best_row = $row; }
     }
