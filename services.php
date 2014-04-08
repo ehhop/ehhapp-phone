@@ -124,8 +124,9 @@ class Webservice {
       if ($date !== FALSE && $date->diff($nearest_sat)->days < $min_diff) {
         $min_diff = $date->diff($nearest_sat)->days;
         foreach ($col_nums as $i => $col_num) {
-          if (!isset($row[$col_num])) { continue; }
+          if (!isset($row[$col_num])) { $on_call[$i] = ''; continue; }
           if (strlen(trim($row[$col_num])) > 0) { $on_call[$i] = $row[$col_num]; }
+          else{ $on_call[$i] = ''; }
         }
       }
     }
